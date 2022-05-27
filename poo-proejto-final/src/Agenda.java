@@ -1,17 +1,23 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Calendar;
 
 public class Agenda {
-    private ArrayList<Calendar> agenda;
+    private Date dataInicial;
+    private Calendar di;
+    private Date dataFinal;
+    private Calendar df;
+
 
     public Agenda() {
-        this.agenda = new ArrayList<Calendar>();
+        dataInicial = new Date();
+        dataFinal = new Date();
+
+        this.di = Calendar.getInstance();
+        this.df = Calendar.getInstance();
+
+        di.setTime(dataInicial);
+
     }
 
-    public Object getAll() {
-        for( int i = 0; i < this.agenda.size(); i++) {
-            System.out.println(this.agenda.get(i).getTime());
-        }
-        return agenda;
-    }
 }

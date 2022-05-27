@@ -1,14 +1,21 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
 
-        Agenda a1 = new Agenda();
-        System.out.println(a1.getAll());
 
-        //System.out.println("Data e hora atual é "+ c.getTime());
+        LocalDateTime dataTimeInicial = LocalDateTime.of(2022, 05, 27, 19, 10, 0);
 
-        //System.out.println("Os agendamentos existentes para essa semana são:\n");
+        LocalDateTime daeTimeFinal = dataTimeInicial.plusMinutes(120);
+
+
+
+        System.out.println(daeTimeFinal);
+
+
 
 
     }
