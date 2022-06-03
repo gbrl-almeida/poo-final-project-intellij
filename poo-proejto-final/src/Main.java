@@ -2,18 +2,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        LocalDateTime agora = LocalDateTime.now();
 
+        Reserva testeReserva = new Reserva("onboarding dev", agora, "ensinando a galera a usar o notion");
+        Reserva testeReserva1 = new Reserva("onboarding dev", agora, "ensinando a galera a usar o notion");
 
-        LocalDateTime dataTimeInicial = LocalDateTime.of(2022, 05, 27, 19, 10, 0);
-
-        LocalDateTime daeTimeFinal = dataTimeInicial.plusMinutes(120);
-
-
-
-        System.out.println(daeTimeFinal);
+        System.out.println(testeReserva.getReservaString());
+        System.out.println(testeReserva1.getReservaString());
 
 
 

@@ -1,0 +1,30 @@
+Fluxo do Programa
+
+Primeiramente vamos enviar uma mensagem enumerando as opções de comandos para o bot.
+
+1- Ver Reservas existentes;
+2- Fazer uma Reservar;
+3- Cancelar uma Reserva;
+
+
+O usuário vai enviar o número correspondente a opção que deseja.
+
+
+Opção 1:
+Não recebe parametros
+Retorna todas as reservas existentes da data de consulta em diante. Retorna todas as informações da reserva.
+
+
+Opção 2:
+
+Pergunta qual será a data da reserva.
+Pergunta qual será a hora da reserva.
+Pergunta qual será o nome da reserva.
+
+Executa validações  para data e hora.
+
+Opção 3:
+
+Pergunta qual é o id da reserva.
+
+Cancela a reserva caso ela exista.

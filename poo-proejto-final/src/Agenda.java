@@ -1,22 +1,17 @@
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 
 public class Agenda {
-    private Date dataInicial;
-    private Calendar di;
-    private Date dataFinal;
-    private Calendar df;
+    private ArrayList<Reserva> reservas;
 
+    private String escritorio;
 
-    public Agenda() {
-        dataInicial = new Date();
-        dataFinal = new Date();
+    public Agenda(String escritorio) {
+        this.reservas = new ArrayList<Reserva>();
 
-        this.di = Calendar.getInstance();
-        this.df = Calendar.getInstance();
-
-        di.setTime(dataInicial);
+        this.escritorio = escritorio;
 
     }
 
