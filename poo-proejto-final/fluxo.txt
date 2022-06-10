@@ -1,5 +1,10 @@
 Fluxo do Programa
 
+
+****
+continuar  daqui:
+converter data e hora pra int na Main para conseguir criar a reserva
+****
 Primeiramente vamos enviar uma mensagem enumerando as opções de comandos para o bot.
 
 1- Ver Reservas existentes;
