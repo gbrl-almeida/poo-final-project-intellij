@@ -19,45 +19,51 @@ public class Main {
 
         if (intR1 == 2 ) {
             Scanner q2 = new Scanner (System.in);
-            System.out.println("Qual a data que deseja reservar? (DD/MM/AAAA)");
+            System.out.println("Para qual dia é a reserva? (DD/MM/AAAA)");
             String r2 = q2.nextLine();
 
             Scanner q3 = new Scanner (System.in);
-            System.out.println("Qual o horário da reserva? (HH:MM)");
+            System.out.println("Quando vai começar a reserva? (HH:MM)");
             String r3 = q3.nextLine();
 
             Scanner q4 = new Scanner (System.in);
-            System.out.println("Qual o nome da reserva?");
+            System.out.println("Qual a duração da reserva? (HH:MM)");
             String r4 = q4.nextLine();
 
             Scanner q5 = new Scanner (System.in);
-            System.out.println("Descrição (opcional)");
+            System.out.println("Qual o nome da reserva?");
             String r5 = q5.nextLine();
 
-            String nomeReserva = r4;
-            String descricao = r5;
+            Scanner q6 = new Scanner (System.in);
+            System.out.println("Descrição (opcional)");
+            String r6= q6.nextLine();
+
+            String nomeReserva = r5;
+            String descricao = r6;
 
             String data[] = new String[3];
             data = r2.split("/");
+            int dia = Integer.parseInt(data[0]);
+            int mes = Integer.parseInt(data[1]);
+            int ano = Integer.parseInt(data[2]);
 
-            String hora[] = new String[3];
-            hora = r3.split("/");
-            LocalDateTime DataHora = LocalDateTime.of(data[2], data[1], data[0], hora[0], hora[1], 0);
+            String hora[] = new String[2];
+            hora = r3.split(":");
+            int hour = Integer.parseInt(data[0]);
+            int minuto = Integer.parseInt(data[1]);
+
+            String horaAdd[] = new String[2];
+            horaAdd = r4.split(":");
+            int hourAdd = Integer.parseInt(data[0]);
+            int minutoAdd = Integer.parseInt(data[1]);
+
+            LocalDateTime DataHoraInicial = LocalDateTime.of(ano, mes, dia, hour, minuto, 0);
+            LocalDateTime DataHoraFinal = DataHoraInicial.plusHours(hourAdd).plusMinutes(minutoAdd);
+
+            Reserva reservaCriada = new Reserva(nomeReserva, descricao, DataHoraInicial, DataHoraFinal);
 
 
-
-           // Reserva reservaCriada = new Reserva()
 
         }
-
-        //Reserva testeReserva = new Reserva("onboarding dev", agora, "ensinando a galera a usar o notion");
-        //Reserva testeReserva1 = new Reserva("onboarding dev", agora, "ensinando a galera a usar o notion");
-
-        //System.out.println(testeReserva.getReservaString());
-        //System.out.println(testeReserva1.getReservaString());
-
-
-
-
     }
 }

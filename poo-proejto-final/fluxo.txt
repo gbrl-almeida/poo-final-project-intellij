@@ -3,13 +3,14 @@ Fluxo do Programa
 
 ****
 continuar  daqui:
-converter data e hora pra int na Main para conseguir criar a reserva
 ****
 Primeiramente vamos enviar uma mensagem enumerando as opções de comandos para o bot.
 
 1- Ver Reservas existentes;
 2- Fazer uma Reservar;
 3- Cancelar uma Reserva;
+4- Ver escritórios;
+5- Criar escritório;
 
 
 O usuário vai enviar o número correspondente a opção que deseja.
@@ -26,7 +27,7 @@ Pergunta qual será a data da reserva.
 Pergunta qual será a hora da reserva.
 Pergunta qual será o nome da reserva.
 
-Executa validações  para data e hora.
+Executa validações para data e hora.
 
 Opção 3:
 

@@ -6,13 +6,27 @@ import java.util.Calendar;
 public class Agenda {
     private ArrayList<Reserva> reservas;
 
-    private String escritorio;
+    private Escritorio escritorio;
 
-    public Agenda(String escritorio) {
+
+    public Agenda(String nomeEscritorio) {
         this.reservas = new ArrayList<Reserva>();
+        this.escritorio = new Escritorio(nomeEscritorio);
+    }
 
-        this.escritorio = escritorio;
+    public void  addReserva(Reserva reserva) {
+        boolean valido = false;
+        try {
+            for (int counter = 0; counter < reservas.size(); counter++) {
+                if (reserva.getDataHoraInicialReservada().isAfter(reservas.get(counter).getDataHoraFinalReservada()) || reserva.getDataHoraInicialReservada().isEqual(reservas.get(counter).getDataHoraFinalReservada())) {
+                    valido = true;
+                } else if (reserva.getDataHoraFinalReservada().isAfter(reservas.get(counter).getDataHoraInicialReservada())) {
 
+                }
+            }
+
+
+        }
     }
 
 }
