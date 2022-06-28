@@ -2,18 +2,16 @@
 import java.util.ArrayList;
 
 public class Agenda{
-    private ArrayList<Reserva> reservas;
+    private final ArrayList<Reserva> reservas;
 
     public Agenda() {
-        this.reservas = new ArrayList<Reserva>();
+        this.reservas = new ArrayList<>();
     }
     public void printReservas() {
-        System.out.println("chegou em printReservas");
-        System.out.println(size());
         for (int i=0; i<size(); i++) {
-            String curr = reservas.get(i).getReservaString();
+            String curr = reservas.get(i).toString();
 
-            System.out.println(curr);
+            System.out.println( "Id: " + (i+1) + "\n" + curr);
         }
     }
 
@@ -21,28 +19,33 @@ public class Agenda{
        return reservas.size();
     }
 
+    public void removeReserva(int id) {
+        if (id > size() - 1 ) {
+            throw new IllegalArgumentException("Não existe reserva com o id informado");
+        } else {
+            reservas.remove(id);
+        }
+    }
+
     public void addReserva(Reserva reserva) {
         boolean valido = true;
-            for (int counter = 0; counter < reservas.size(); counter++) {
-                if (reserva.getDataHoraFinalReservada().isAfter((reservas.get(counter).getDataHoraInicialReservada())) && (reserva.getDataHoraFinalReservada().isBefore((reservas.get(counter).getDataHoraFinalReservada())) || reserva.getDataHoraFinalReservada().isEqual((reservas.get(counter).getDataHoraFinalReservada())))) {
-                    valido = false;
-                    System.out.println("1-Já existe uma reserva que comtempla esse mesmo intervalo duração nessa sala. Por favor, escolhe um horário diferente.");
-                    break;
-                } else if ((reserva.getDataHoraInicialReservada().isAfter((reservas.get(counter).getDataHoraInicialReservada())) || reserva.getDataHoraInicialReservada().isEqual((reservas.get(counter).getDataHoraInicialReservada()))) && (reserva.getDataHoraInicialReservada().isBefore(reservas.get(counter).getDataHoraFinalReservada()))) {
-                    valido = false;
-                    System.out.println("2-Já existe uma reserva que comtempla esse mesmo intervalo duração nessa sala. Por favor, escolhe um horário diferente.");
-                    break;
-                } else if (reserva.getDataHoraInicialReservada().isBefore((reservas.get(counter).getDataHoraInicialReservada())) && reserva.getDataHoraFinalReservada().isAfter((reservas.get(counter).getDataHoraFinalReservada()))) {
-                    valido = false;
-                    System.out.println("3-Já existe uma reserva que comtempla esse mesmo intervalo duração nessa sala. Por favor, escolhe um horário diferente.");
-                    break;
-                }
-
-
+        for (Reserva value : reservas) {
+            if (reserva.getDataHoraFinalReservada().isAfter((value.getDataHoraInicialReservada())) && (reserva.getDataHoraFinalReservada().isBefore((value.getDataHoraFinalReservada())) || reserva.getDataHoraFinalReservada().isEqual((value.getDataHoraFinalReservada())))) {
+                valido = false;
+                System.out.println("1-Já existe uma reserva que comtempla esse mesmo intervalo duração nessa sala. Por favor, escolhe um horário diferente.");
+                break;
+            } else if ((reserva.getDataHoraInicialReservada().isAfter((value.getDataHoraInicialReservada())) || reserva.getDataHoraInicialReservada().isEqual((value.getDataHoraInicialReservada()))) && (reserva.getDataHoraInicialReservada().isBefore(value.getDataHoraFinalReservada()))) {
+                valido = false;
+                System.out.println("2-Já existe uma reserva que comtempla esse mesmo intervalo duração nessa sala. Por favor, escolhe um horário diferente.");
+                break;
+            } else if (reserva.getDataHoraInicialReservada().isBefore((value.getDataHoraInicialReservada())) && reserva.getDataHoraFinalReservada().isAfter((value.getDataHoraFinalReservada()))) {
+                valido = false;
+                System.out.println("3-Já existe uma reserva que comtempla esse mesmo intervalo duração nessa sala. Por favor, escolhe um horário diferente.");
+                break;
             }
+        }
 
-        if (valido == true) {
-            System.out.println("adicionou");
+        if (valido) {
             reservas.add(reserva);
         }
     }

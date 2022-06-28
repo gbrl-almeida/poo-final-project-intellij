@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Escritorio {
     private String nome;
-    private ArrayList<Sala> salas;
+    private final ArrayList<Sala> salas;
 
     public Escritorio(String nome) {
         this.nome = nome;
-        this.salas = new ArrayList<Sala>();
+        this.salas = new ArrayList<>();
     }
 
     public String getNome() {
@@ -22,17 +22,17 @@ public class Escritorio {
     }
 
     public void printSalas() {
-        for (int i=0; i<salas.size(); i++) {
-            String curr = salas.get(i).getNome();
+        for (Sala sala : salas) {
+            String curr = sala.getNome();
             System.out.println(curr);
         }
     }
 
     public Sala selecionarSala(String nome) {
         Sala salaSelecionado = null;
-        for (int i=0; i<salas.size(); i++) {
-            if (nome.equals(salas.get(i).getNome())) {
-                salaSelecionado = salas.get(i);
+        for (Sala sala : salas) {
+            if (nome.equals(sala.getNome())) {
+                salaSelecionado = sala;
             }
         }
         return salaSelecionado;

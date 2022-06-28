@@ -1,23 +1,19 @@
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicLong;
+import java.util.Objects;
 
 public class Reserva {
-    private String id;
-    private String nome;
-    private String descricao;
-    private LocalDateTime dataHoraInicialReservada;
-    private LocalDateTime dataHoraFinalReservada;
+    private final String nome;
+    private final String descricao;
+    private final LocalDateTime dataHoraInicialReservada;
+    private final LocalDateTime dataHoraFinalReservada;
+    private final Pessoa funcionario;
 
-
-
-    public Reserva(String nome, String descricao, LocalDateTime dataHoraReservada, LocalDateTime dataHoraFinalReservada ) {
-        this.id = UUID.randomUUID().toString();
+    public Reserva(String nome, String descricao, LocalDateTime dataHoraReservada, LocalDateTime dataHoraFinalReservada, Pessoa funcionario ) {
         this.nome = nome;
         this.descricao = descricao;
         this.dataHoraInicialReservada = dataHoraReservada;
         this.dataHoraFinalReservada = dataHoraFinalReservada;
+        this.funcionario = funcionario;
     }
 
     public LocalDateTime getDataHoraInicialReservada() {
@@ -30,7 +26,7 @@ public class Reserva {
 
     public String getDay(String tipo) {
         String day;
-        if (tipo == "inicial") {
+        if (Objects.equals(tipo, "inicial")) {
             day = String.format("%d", dataHoraInicialReservada.getDayOfMonth());
         }
         else {
@@ -41,18 +37,19 @@ public class Reserva {
 
     public String getMonth(String tipo) {
         String month;
-        if (tipo == "inicial") {
+        if (Objects.equals(tipo, "inicial")) {
             month = String.format("%d", dataHoraInicialReservada.getMonthValue());
         }
         else {
             month = String.format("%d", dataHoraFinalReservada.getMonthValue());
         }
         return month;
+
     }
 
     public String getYear(String tipo) {
         String year;
-        if (tipo == "inicial") {
+        if (Objects.equals(tipo, "inicial")) {
             year = String.format("%d", dataHoraInicialReservada.getYear());
         }
         else {
@@ -63,7 +60,7 @@ public class Reserva {
 
     public String getHour(String tipo) {
         String hour;
-        if (tipo == "inicial") {
+        if (Objects.equals(tipo, "inicial")) {
             hour = String.format("%d", dataHoraInicialReservada.getHour());
         }
         else {
@@ -74,7 +71,7 @@ public class Reserva {
 
     public String getMinute(String tipo) {
         String minute;
-        if (tipo == "inicial") {
+        if (Objects.equals(tipo, "inicial")) {
             minute = String.format("%d", dataHoraInicialReservada.getMinute());
         }
         else {
@@ -92,24 +89,13 @@ public class Reserva {
         return descricao;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public String getReservaString() {
-        String reservaString =
-                "--------------------------------------\n" +
-                "Nome -> " + getNome() + "\n" +
+    @Override
+    public String toString() {
+        return  "Nome -> " + getNome() + "\n" +
                 "Descrição -> " + getDescricao() + "\n" +
                 "Inicia em-> " + getDay("inicial") + "/" + getMonth("inicial") + "/" + getYear("inicial") + " às " + getHour("inicial") + ":" + getMinute("inicial") + "\n" +
                 "Termina em-> " + getDay("final") + "/" + getMonth("final") + "/" + getYear("final") + " às " + getHour("final") + ":" + getMinute("final") + "\n" +
-                "Id -> " + getId();
-        return reservaString;
+                "Funcionário -> " + funcionario.getNome() + " " + funcionario.getCargo() + "\n" +
+                "--------------------------------------";
     }
-
-
-
-
-
-
 }

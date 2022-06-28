@@ -1,10 +1,11 @@
-public class Sala extends Agenda {
+
+public class Sala {
 
     private String nome;
     private int capacidade;
-    private boolean temProjetor;
+    private final boolean temProjetor;
 
-    private Agenda agenda;
+    private final Agenda agenda;
 
 
     public Sala(String nome, int capacidade, boolean temProjetor) {
@@ -16,12 +17,20 @@ public class Sala extends Agenda {
 
     public void printAgenda() {
         agenda.printReservas();
-        System.out.println("chegou em printAgenda");
+    }
+
+    public void addReserva(Reserva reserva) {
+        agenda.addReserva(reserva);
+    }
+
+    public void removeReserva(int id) {
+        agenda.removeReserva(id);
     }
 
     public String getNome() {
         return nome;
     }
+
 
     public void setNome(String novoNome) {
         this.nome = novoNome;
